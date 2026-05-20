@@ -13,6 +13,43 @@
   });
 })();
 
+// ---------- Mobile nav (hamburger) ----------
+(function () {
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (!toggle || !links) return;
+
+  function close() {
+    links.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+  }
+  function open() {
+    links.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+  }
+
+  toggle.addEventListener('click', () => {
+    links.classList.contains('is-open') ? close() : open();
+  });
+
+  // Close on any link tap (so the section navigates cleanly)
+  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+
+  // Close on outside tap
+  document.addEventListener('click', (e) => {
+    if (!links.classList.contains('is-open')) return;
+    if (e.target.closest('#nav-links') || e.target.closest('#nav-toggle')) return;
+    close();
+  });
+
+  // Close if resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 820) close();
+  });
+})();
+
 // ---------- Footer year ----------
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -29,7 +66,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
     },
     {
       cmd: 'cat about.md',
-      out: 'incoming MS CS @ NYU Tandon · currently building offline RAG & Go market-data backends.'
+      out: 'incoming MS CS @ NYU Tandon · building offline RAG + Go market-data backends.'
     },
     {
       cmd: 'ls ~/interests',
