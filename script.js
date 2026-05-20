@@ -25,19 +25,19 @@ document.getElementById('year').textContent = new Date().getFullYear();
   const sequence = [
     {
       cmd: 'whoami',
-      out: 'riyansh sachdev — software engineer, ML/AI builder.'
+      out: 'riyansh sachdev — software engineer, ML/AI developer.'
     },
     {
       cmd: 'cat about.md',
-      out: 'incoming MS CS @ NYU Tandon · currently building offline RAG + Go market-data backends.'
+      out: 'incoming MS CS @ NYU Tandon · currently building offline RAG & Go market-data backends.'
     },
     {
       cmd: 'ls ~/interests',
-      out: 'ml-systems/  distributed-backends/  retrieval/  low-latency/  open-source/'
+      out: 'ai-ml-systems/  distributed-backends/  coffee/  claude/'
     },
     {
       cmd: 'echo $STATUS',
-      out: '<span class="ok">●</span> open to research collabs, internships & full-time SWE/ML roles'
+      out: '<span class="ok">●</span> open to research collabs & SWE/ML/AI internship roles'
     },
     {
       cmd: 'git log --oneline -1',
@@ -49,10 +49,10 @@ document.getElementById('year').textContent = new Date().getFullYear();
     }
   ];
 
-  const TYPE_SPEED = 55;
-  const ERASE_SPEED = 28;
-  const HOLD_AFTER_OUT = 2200;
-  const HOLD_BEFORE_TYPE = 350;
+  const TYPE_SPEED = 90;
+  const ERASE_SPEED = 90;
+  const HOLD_AFTER_OUT = 3600;
+  const HOLD_BEFORE_TYPE = 500;
 
   let seqIdx = 0;
 
