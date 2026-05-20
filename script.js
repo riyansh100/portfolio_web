@@ -1,4 +1,4 @@
-// Theme toggle with localStorage persistence
+// ---------- Theme toggle (persisted) ----------
 (function () {
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
@@ -13,55 +13,103 @@
   });
 })();
 
-// Footer year
+// ---------- Footer year ----------
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Pinned-ish GitHub repos: pull recent public repos and show top 4 by stars/recency
-(async function () {
-  const container = document.getElementById('gh-repos');
-  if (!container) return;
-  try {
-    const res = await fetch(
-      'https://api.github.com/users/riyansh100/repos?per_page=100&sort=updated'
-    );
-    if (!res.ok) throw new Error('GitHub API error');
-    const repos = await res.json();
-    const top = repos
-      .filter((r) => !r.fork && !r.archived)
-      .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
-      .slice(0, 4);
+// ---------- Dynamic terminal: typewriter cycling through commands ----------
+(function () {
+  const cmdEl = document.getElementById('term-cmd');
+  const outEl = document.getElementById('term-out');
+  if (!cmdEl || !outEl) return;
 
-    if (!top.length) {
-      container.innerHTML = '<p class="gh-loading">No public repos yet.</p>';
-      return;
+  const sequence = [
+    {
+      cmd: 'whoami',
+      out: 'riyansh sachdev — software engineer, ML/AI builder.'
+    },
+    {
+      cmd: 'cat about.md',
+      out: 'incoming MS CS @ NYU Tandon · currently building offline RAG + Go market-data backends.'
+    },
+    {
+      cmd: 'ls ~/interests',
+      out: 'ml-systems/  distributed-backends/  retrieval/  low-latency/  open-source/'
+    },
+    {
+      cmd: 'echo $STATUS',
+      out: '<span class="ok">●</span> open to research collabs, internships & full-time SWE/ML roles'
+    },
+    {
+      cmd: 'git log --oneline -1',
+      out: 'feat: shipped FinRAG → 100% offline doc Q&A with zero data egress'
+    },
+    {
+      cmd: 'fortune',
+      out: '"build the boring infra. the magic only shows up after."'
     }
+  ];
 
-    container.innerHTML = top
-      .map(
-        (r) => `
-        <article class="gh-repo">
-          <h4><a href="${r.html_url}" target="_blank" rel="noopener">${r.name}</a></h4>
-          <p>${r.description ? escapeHtml(r.description) : 'No description.'}</p>
-          <div class="gh-meta">
-            ${r.language ? `<span>${escapeHtml(r.language)}</span>` : ''}
-            <span>★ ${r.stargazers_count}</span>
-            <span>Updated ${formatDate(r.pushed_at)}</span>
-          </div>
-        </article>
-      `
-      )
-      .join('');
-  } catch (e) {
-    container.innerHTML = '<p class="gh-loading">Couldn\'t load repos right now — visit <a href="https://github.com/riyansh100" target="_blank" rel="noopener">github.com/riyansh100</a>.</p>';
+  const TYPE_SPEED = 55;
+  const ERASE_SPEED = 28;
+  const HOLD_AFTER_OUT = 2200;
+  const HOLD_BEFORE_TYPE = 350;
+
+  let seqIdx = 0;
+
+  function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
+
+  async function typeText(el, text, speed) {
+    for (let i = 0; i < text.length; i++) {
+      el.textContent = text.slice(0, i + 1);
+      await sleep(speed + Math.random() * 35);
+    }
+  }
+  async function eraseText(el, speed) {
+    const t = el.textContent;
+    for (let i = t.length; i > 0; i--) {
+      el.textContent = t.slice(0, i - 1);
+      await sleep(speed);
+    }
   }
 
-  function escapeHtml(s) {
-    return s.replace(/[&<>"']/g, (c) => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[c]));
+  async function loop() {
+    while (true) {
+      const step = sequence[seqIdx];
+      await sleep(HOLD_BEFORE_TYPE);
+      await typeText(cmdEl, step.cmd, TYPE_SPEED);
+      await sleep(280);
+      outEl.innerHTML = step.out;
+      await sleep(HOLD_AFTER_OUT);
+      // erase output then command
+      outEl.innerHTML = '';
+      await eraseText(cmdEl, ERASE_SPEED);
+      seqIdx = (seqIdx + 1) % sequence.length;
+    }
   }
-  function formatDate(iso) {
-    const d = new Date(iso);
-    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-  }
+
+  loop();
+})();
+
+// ---------- Reveal-on-scroll for sections ----------
+(function () {
+  const els = document.querySelectorAll('.section-inner');
+  if (!('IntersectionObserver' in window) || !els.length) return;
+  els.forEach((el) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 600ms ease, transform 600ms ease';
+  });
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+  );
+  els.forEach((el) => io.observe(el));
 })();
