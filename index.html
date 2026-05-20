@@ -66,10 +66,13 @@
         </div>
       </div>
       <div class="hero-avatar">
-        <div class="avatar-frame">
-          <img src="assets/r2.png" alt="Riyansh Sachdev" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="avatar-placeholder">RS</div>
+        <div class="photo-stack" id="photo-stack" data-images="assets/r3.jpeg,assets/p1 2.jpeg,assets/p2 2.jpeg" aria-label="Photos of Riyansh — click or tap to shuffle">
+          <div class="stack-placeholder">RS</div>
         </div>
+        <button class="stack-shuffle" id="stack-shuffle" aria-label="Shuffle photos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+          <span>shuffle</span>
+        </button>
       </div>
     </section>
 
@@ -79,8 +82,8 @@
         <h2><span class="section-num">01.</span> About</h2>
         <div class="about-grid">
           <div>
-            <p>I'm a computer engineering senior at <strong>MPSTME, Mumbai</strong> (CGPA 3.61/4.0), heading to <strong>NYU Tandon</strong> this fall for my Master's in Computer Science.</p>
-            <p>Currently working as an SDE intern at <strong>Finseal Software Services</strong>, where I build retrieval-augmented LLM tooling and real-time market-data backends. Prior to that, I shipped analytics dashboards as a business analyst, published a peer-reviewed NL-to-SQL paper at ICAIDISS 2026, and won the national <strong>Toycathon</strong> hosted by India's Ministry of Education.</p>
+            <p>I'm a computer engineering senior at <strong>NMIMS, Mumbai</strong> (CGPA 3.61/4.0), heading to <strong>NYU Tandon</strong> this fall for my Master's in Computer Science.</p>
+            <p>Currently working as an SDE intern at <strong>Finseal Software Services</strong>, where I'm building retrieval-augmented LLM tooling and real-time market-data backends. Prior to that, I shipped analytics dashboards as a business analyst, published a peer-reviewed NL-to-SQL paper at ICAIDISS 2026, and won the national <strong>Toycathon</strong> hosted by India's Ministry of Education.</p>
             <p>I'm most excited by the messy seam between <strong>AI/ML systems and production infra</strong> — fast retrieval, low-latency streaming, things that have to actually work under load.</p>
           </div>
           <aside class="quick-facts">
@@ -316,7 +319,7 @@
 
   <footer class="footer">
     <span>© <span id="year"></span> Riyansh Sachdev</span>
-    <span class="footer-meta">Built with vanilla HTML/CSS/JS · Hosted on GitHub Pages</span>
+    <span class="footer-meta">24</span>
   </footer>
 
   <script src="script.js"></script>

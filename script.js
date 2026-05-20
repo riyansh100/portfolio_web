@@ -90,6 +90,98 @@ document.getElementById('year').textContent = new Date().getFullYear();
   loop();
 })();
 
+// ---------- Photo stack (shuffling deck) ----------
+(function () {
+  const stack = document.getElementById('photo-stack');
+  const shuffleBtn = document.getElementById('stack-shuffle');
+  if (!stack) return;
+
+  const imagePaths = (stack.dataset.images || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  if (!imagePaths.length) return;
+
+  // Preload + filter to only images that exist
+  function preload(src) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(src);
+      img.onerror = () => resolve(null);
+      img.src = src;
+    });
+  }
+
+  Promise.all(imagePaths.map(preload)).then((results) => {
+    const available = results.filter(Boolean);
+    if (!available.length) return; // keep placeholder visible
+
+    // Remove placeholder
+    const ph = stack.querySelector('.stack-placeholder');
+    if (ph) ph.remove();
+
+    // Build cards (last in DOM = on top visually)
+    available.forEach((src, idx) => {
+      const card = document.createElement('div');
+      card.className = 'stack-card';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Riyansh Sachdev';
+      card.appendChild(img);
+      stack.appendChild(card);
+    });
+
+    layout();
+
+    function layout() {
+      const cards = Array.from(stack.querySelectorAll('.stack-card'));
+      // bottom-up offsets: cards behind are scaled down and slightly rotated
+      const n = cards.length;
+      cards.forEach((c, i) => {
+        // i = 0 is bottom in DOM order; top is last
+        const depth = n - 1 - i; // 0 for top
+        const offsetY = depth * -8; // shift up
+        const offsetX = depth * 6;  // shift right
+        const rotate = depth * -3;  // slight tilt
+        const scale = 1 - depth * 0.04;
+        c.style.zIndex = String(100 - depth);
+        c.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rotate}deg) scale(${scale})`;
+        c.style.opacity = depth > 3 ? '0' : String(1 - depth * 0.06);
+      });
+    }
+
+    let busy = false;
+    function shuffle() {
+      if (busy) return;
+      const cards = Array.from(stack.querySelectorAll('.stack-card'));
+      if (cards.length < 2) return;
+      busy = true;
+      const top = cards[cards.length - 1];
+      top.classList.add('is-flying');
+      setTimeout(() => {
+        // Move top card to the bottom of the stack (becomes back card)
+        top.classList.remove('is-flying');
+        top.style.transition = 'none';
+        stack.insertBefore(top, stack.firstChild);
+        // Force reflow then re-enable transitions
+        void top.offsetWidth;
+        top.style.transition = '';
+        layout();
+        busy = false;
+      }, 600);
+    }
+
+    stack.addEventListener('click', shuffle);
+    if (shuffleBtn) shuffleBtn.addEventListener('click', (e) => { e.stopPropagation(); shuffle(); });
+
+    // Auto-shuffle every 4s if more than 1 image
+    if (available.length > 1) {
+      setInterval(shuffle, 4000);
+    }
+  });
+})();
+
 // ---------- Reveal-on-scroll for sections ----------
 (function () {
   const els = document.querySelectorAll('.section-inner');
