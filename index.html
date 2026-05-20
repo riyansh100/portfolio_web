@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riyansh Sachdev — Software Engineer</title>
+  <meta name="description" content="Riyansh Sachdev — Software engineer, ML/AI builder. Incoming MS CS @ NYU Tandon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="brand"><span class="brand-prompt">$</span> riyansh</a>
+    <nav class="nav-links">
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#publications">writing</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <div class="terminal">
+          <span class="term-prompt">~/riyansh</span>
+          <span class="term-cursor">$</span>
+          <span class="term-cmd">whoami</span>
+        </div>
+        <h1>Riyansh Sachdev</h1>
+        <p class="tagline">Software engineer building <span class="accent">AI systems</span>, <span class="accent">distributed backends</span>, and the occasional thing in between.</p>
+        <p class="meta">
+          <span>Jersey City, NJ</span>
+          <span class="dot">·</span>
+          <span>Incoming MS CS @ NYU Tandon · Fall 2026</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="assets/RiyanshSachdevResume.pdf" download>Download Resume</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+        <div class="social">
+          <a href="https://github.com/riyansh100" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/riyansh-sachdev-80734423a/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="mailto:riyansh10@gmail.com">Email ↗</a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-frame">
+          <img src="assets/r2.png" alt="Riyansh Sachdev" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="avatar-placeholder">RS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2><span class="section-num">01.</span> About</h2>
+      <div class="about-grid">
+        <div>
+          <p>I'm a computer engineering senior at <strong>MPSTME, Mumbai</strong> (CGPA 3.61/4.0), heading to <strong>NYU Tandon</strong> this fall for my Master's in Computer Science.</p>
+          <p>Right now I'm an SDE intern at <strong>Finseal Software Services</strong>, where I build retrieval-augmented LLM tooling and real-time market-data backends. Before that, I shipped analytics dashboards as a business analyst, published a peer-reviewed NL-to-SQL paper at ICAIDISS 2026, and won the national <strong>Toycathon</strong> hosted by India's Ministry of Education.</p>
+          <p>I'm most excited by the messy seam between <strong>ML systems and production infra</strong> — fast retrieval, low-latency streaming, things that have to actually work under load.</p>
+        </div>
+        <aside class="quick-facts">
+          <h3>Quick facts</h3>
+          <ul>
+            <li><span>Education</span><strong>NYU Tandon, MS CS (Fall '26)</strong></li>
+            <li><span>Currently</span><strong>SDE Intern @ Finseal</strong></li>
+            <li><span>Location</span><strong>Jersey City, NJ</strong></li>
+            <li><span>Focus</span><strong>AI / ML systems, backends</strong></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2><span class="section-num">02.</span> Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Languages</h3>
+          <p>Java · Python · C++ · Go · R · JavaScript · HTML · CSS</p>
+        </div>
+        <div class="skill-card">
+          <h3>AI / ML</h3>
+          <p>PyTorch · TensorFlow · Transformers · LangChain · LangGraph · RAG · ChromaDB · Scikit-Learn · OpenCV · MediaPipe</p>
+        </div>
+        <div class="skill-card">
+          <h3>Data &amp; Infra</h3>
+          <p>PostgreSQL · MySQL · Redis · SQLite · Apache Hive · HBase · Spark · Hadoop · Tableau · Firebase</p>
+        </div>
+        <div class="skill-card">
+          <h3>Tools</h3>
+          <p>Git · GitHub Actions · Docker · Postman · NGINX · Flask · Gorilla Websockets · Sentinels · Android Studio</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2><span class="section-num">03.</span> Experience</h2>
+      <ol class="timeline">
+        <li>
+          <div class="t-meta">
+            <span class="t-date">Jan 2026 — Present</span>
+          </div>
+          <div class="t-body">
+            <h3>Software Development Engineering Intern</h3>
+            <p class="t-org">Finseal Software Services Pvt. Ltd.</p>
+            <ul>
+              <li><a href="http://github.com/riyansh100/finrag" target="_blank" rel="noopener">FinRAG</a> — Fully offline RAG assistant for document Q&amp;A using Llama 3.1 8B + nomic-embed via Ollama, ChromaDB, and LangChain. Zero API calls or data egress; MMR retrieval with metadata filtering to suppress boilerplate and scope answers per document.</li>
+              <li><a href="https://github.com/riyansh100/chat-backend" target="_blank" rel="noopener">TradeFlow</a> — Real-time market-data backend in Go ingesting live Binance feeds across 6 streaming analytics engines. Sustained 500 concurrent WebSocket clients over 300 instruments — 776K messages delivered with 0 drops at ~100ms avg latency and stable ~10MB memory.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="t-meta">
+            <span class="t-date">May — July 2025</span>
+          </div>
+          <div class="t-body">
+            <h3>Business Analyst Intern</h3>
+            <p class="t-org">VA Global Business</p>
+            <ul>
+              <li>Built interactive dashboards over the company's purchase and sales financials, turning raw spreadsheets into views used by leadership for pricing and procurement decisions.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2><span class="section-num">04.</span> Projects</h2>
+      <div class="projects-grid" id="projects-grid">
+        <article class="project-card">
+          <header>
+            <h3><a href="https://github.com/riyansh100/Finetuning-Large-Language-Models-DeepLearning.AI-Project" target="_blank" rel="noopener">Finetuning LLMs</a></h3>
+            <span class="proj-date">Oct 2025</span>
+          </header>
+          <p>End-to-end LLM fine-tuning pipeline with Transformers + PyTorch — dataset preprocessing, gradient-based weight updates, and performance benchmarking.</p>
+          <div class="proj-tags"><span>PyTorch</span><span>Transformers</span><span>LLMs</span></div>
+        </article>
+
+        <article class="project-card">
+          <header>
+            <h3><a href="https://github.com/riyansh100/Pneumonia-and-Tuberculosis-Detection-using-Chest-X-Rays" target="_blank" rel="noopener">Pneumonia &amp; TB X-Ray Detection</a></h3>
+            <span class="proj-date">Sep 2025</span>
+          </header>
+          <p>Trained and benchmarked 4 deep learning models (Custom CNN, ResNet50, MobileNetV2, InceptionV3) to classify chest X-rays — InceptionV3 hit 84.83% validation accuracy.</p>
+          <div class="proj-tags"><span>CNN</span><span>Medical Imaging</span><span>TensorFlow</span></div>
+        </article>
+
+        <article class="project-card">
+          <header>
+            <h3><a href="https://github.com/riyansh100/Indian-Earthquake-Prediction" target="_blank" rel="noopener">Earthquake Prediction</a></h3>
+            <span class="proj-date">Apr 2025</span>
+          </header>
+          <p>Regression and classification models (Scikit-Learn) to predict earthquake magnitude and severity across India, with interactive Folium risk-zone visualizations.</p>
+          <div class="proj-tags"><span>Scikit-Learn</span><span>Folium</span><span>Geospatial</span></div>
+        </article>
+
+        <article class="project-card">
+          <header>
+            <h3><a href="https://github.com/riyansh100/show-booking" target="_blank" rel="noopener">Show Booking Platform</a></h3>
+            <span class="proj-date">Mar 2025</span>
+          </header>
+          <p>Spring Boot microservices (4 services, API Gateway, Netflix Eureka) with JWT auth and MySQL persistence.</p>
+          <div class="proj-tags"><span>Spring Boot</span><span>Microservices</span><span>JWT</span></div>
+        </article>
+      </div>
+
+      <div class="github-live">
+        <h3>Latest from GitHub</h3>
+        <div id="gh-repos" class="gh-repos">
+          <p class="gh-loading">Loading recent repos…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS & AWARDS -->
+    <section id="publications" class="section">
+      <h2><span class="section-num">05.</span> Publications &amp; Awards</h2>
+      <ul class="pub-list">
+        <li>
+          <div class="pub-head">
+            <h3><a href="https://www.researchgate.net/publication/403266469_QueryMate_-_Linking_Natural_Language_to_SQL_Queries" target="_blank" rel="noopener">QueryMate — Linking Natural Language to SQL Queries</a></h3>
+            <span class="pub-date">Jan 2026</span>
+          </div>
+          <p>Sachdev, R., Garg, P., Bhuva, A. — Peer-reviewed conference paper presented at <em>ICAIDISS 2026, Sharda University Agra</em>.</p>
+        </li>
+        <li>
+          <div class="pub-head">
+            <h3><a href="https://drive.google.com/file/d/1nT0RdaZHFPnJ2Z-amzR95izvZ70-OZcr/view?usp=sharing" target="_blank" rel="noopener">Toycathon Winner</a></h3>
+            <span class="pub-date">Jun 2021</span>
+          </div>
+          <p>National hackathon win (Ministry of Education's Innovation Cell, Govt. of India) for a GUI educational game in Python promoting game-based learning for children.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" class="section">
+      <h2><span class="section-num">06.</span> Certifications</h2>
+      <ul class="cert-list">
+        <li>
+          <strong>IBM RAG and Agentic AI Professional Certificate</strong>
+          <span class="cert-date">In progress · 6/10 · May 2026</span>
+          <p>GenAI specialization — RAG, multimodal, and agentic apps with LangChain, LangGraph, vector stores.</p>
+        </li>
+        <li>
+          <strong><a href="https://www.credly.com/badges/3bac47f3-f07f-4977-9a8d-9d91e0557cf6/public_url" target="_blank" rel="noopener">AWS Academy — Cloud Architecting</a></strong>
+          <span class="cert-date">Oct 2025</span>
+          <p>Designing and deploying scalable, secure, cost-efficient cloud solutions on AWS.</p>
+        </li>
+        <li>
+          <strong><a href="https://coursera.org/share/3016d26543d5a8390b40ac10dd4676c1" target="_blank" rel="noopener">DeepLearning.AI &amp; Stanford — ML Specialization</a></strong>
+          <span class="cert-date">Jun 2025</span>
+          <p>3-course specialization: supervised, unsupervised, reinforcement learning, recommender systems.</p>
+        </li>
+        <li>
+          <strong><a href="https://coursera.org/share/d483ea451619b54478cdf4fa08692d29" target="_blank" rel="noopener">IBM Data Science Professional Certificate</a></strong>
+          <span class="cert-date">Sep 2024</span>
+          <p>10-course program in Python, SQL, data viz, and ML — capstone predicting SpaceX launch outcomes.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2><span class="section-num">07.</span> Get in touch</h2>
+      <p class="contact-lead">I'm always happy to chat about ML systems, backend infra, or interesting research. Reach out — I read every email.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:riyansh10@gmail.com">riyansh10@gmail.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/riyansh-sachdev-80734423a/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/riyansh100" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Riyansh Sachdev</span>
+    <span class="footer-meta">Built with vanilla HTML/CSS/JS · Hosted on GitHub Pages</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
